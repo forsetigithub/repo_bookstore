@@ -138,9 +138,9 @@ class _FormState extends State<_Form> {
                 onPressed: () async{
                   if(_formKey.currentState!.validate())
                     await widget._homeController.addBook(Book(
-                      0,
-                      _titleFieldController.text,
-                      int.parse(_yearFieldController.text)
+                      id: 0,
+                      title:  _titleFieldController.text,
+                      year: int.parse(_yearFieldController.text)
                     ));
                     _titleFieldController.clear();
                     _yearFieldController.clear();
@@ -162,7 +162,7 @@ class _BookTable extends StatelessWidget {
   final VoidCallback _refreshList;
 
   
-  _BookTable(this._homeController, this._refreshList);
+  const _BookTable(this._homeController, this._refreshList);
   
   @override
   Widget build(BuildContext context) {
@@ -194,13 +194,12 @@ class _BookTable extends StatelessWidget {
       DataCell(IconButton(
         icon: const Icon(Icons.delete),
         onPressed: () async {
-          await _homeController.removeBook(book.id);
+          await _homeController.removeBook(book.id!);
           _refreshList();
         },
       ))
     ])).toList();
   }
-
 }
 
 

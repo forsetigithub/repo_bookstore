@@ -1,20 +1,17 @@
-class Book {
-  final int id;
-  final String title;
-  final int year;
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter/foundation.dart';
 
-  Book(this.id,this.title,this.year);
+part 'book.freezed.dart';
+part 'book.g.dart';
 
-  Book.fromMap(Map<String,dynamic> data) :
-    id = data['id'],
-    title = data['title'],
-    year = data['year'];
 
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'title': title,
-      'year' : year
-    };
-  }
+@freezed
+class Book with _$Book {
+  const factory Book({
+    final int? id,
+    final String? title,
+    final int? year,
+  }) = _Book;
+
+  factory Book.fromJson(Map<String,Object?> data) => _$BookFromJson(data);
 }

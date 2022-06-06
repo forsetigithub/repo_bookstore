@@ -16,23 +16,23 @@ class BookRepository implements IBookRepository {
   @override
   Future<List<Book>> getAll() async{
     var items = await _db.list();
-    return items.map((item) => Book.fromMap(item)).toList();
+    return items.map((item) => Book.fromJson(item)).toList();
   }
 
   @override
   Future<Book?> getOne(int id) async{
     var item = await _db.findOne(id);
-    return item != null ? Book.fromMap(item) : null;
+    return item != null ? Book.fromJson(item) : null;
   }
 
   @override
   Future<void> insert(Book book) async{
-    await _db.insert(book.toMap());
+    await _db.insert(book.toJson());
   }
 
   @override
   Future<void> update(Book book) async{
-    await _db.update(book.toMap());
+    await _db.update(book.toJson());
   }
 
 }

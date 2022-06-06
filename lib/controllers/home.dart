@@ -1,6 +1,6 @@
 
 import 'package:repo_bookstore/db/virtual_db.dart';
-import 'package:repo_bookstore/repositories/book.dart';
+import 'package:repo_bookstore/repositories/book_repository.dart';
 
 import '../models/book.dart';
 
